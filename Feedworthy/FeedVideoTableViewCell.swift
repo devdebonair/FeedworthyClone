@@ -12,6 +12,7 @@ import AVFoundation
 class FeedVideoTableViewCell: FeedTableViewCell {
     
     internal var videoView = VideoView()
+    internal var accessoryImage = UIImageView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         videoView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +36,9 @@ class FeedVideoTableViewCell: FeedTableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        videoView.player.volume = 0.0
         videoView.player.replaceCurrentItemWithPlayerItem(nil)
+        accessoryImage.removeConstraints(accessoryImage.constraints)
+        accessoryImage.removeFromSuperview()
     }
 }

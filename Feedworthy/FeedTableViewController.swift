@@ -117,6 +117,18 @@ class FeedTableViewController: UITableViewController {
                 cell.videoView.snp_makeConstraints(closure: { (make) in
                     make.height.equalTo(newHeight).priority(999)
                 })
+                
+                cell.accessoryImage.image = UIImage(named: "unmute")
+                cell.accessoryImage.image?.imageWithRenderingMode(.AlwaysTemplate)
+                cell.accessoryImage.tintColor = UIColor.whiteColor()
+                
+                cell.videoView.addSubview(cell.accessoryImage)
+                
+                cell.accessoryImage.snp_makeConstraints { (make) in
+                    make.left.equalTo(cell.videoView).offset(20)
+                    make.bottom.equalTo(cell.videoView).offset(-15)
+                    make.height.width.equalTo(20)
+                }
             }
         }
         
@@ -126,6 +138,7 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? FeedVideoTableViewCell {
             cell.videoView.player.play()
+            cell.accessoryImage.alpha = 0.2
             cell.videoView.player.rate = 1.0
             cell.videoView.player.volume = 0
         }
@@ -138,8 +151,14 @@ class FeedTableViewController: UITableViewController {
             if let cell = cell as? FeedVideoTableViewCell {
                 if cell.videoView.player.volume < 1 {
                     cell.videoView.player.volume = 1.0
+                    UIView.animateWithDuration(0.4, animations: {
+                        cell.accessoryImage.alpha = 1.0
+                    })
                 } else {
                     cell.videoView.player.volume = 0.0
+                    UIView.animateWithDuration(0.4, animations: {
+                        cell.accessoryImage.alpha = 0.2
+                    })
                 }
             }
         }
