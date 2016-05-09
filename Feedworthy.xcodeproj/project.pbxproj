@@ -10,6 +10,14 @@
 		4B0997BBD9C1E115CC0DD0AA /* Pods_Feedworthy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD6F2B8159A88EB439810BF /* Pods_Feedworthy.framework */; };
 		562777131CE0ED9700B9568D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562777121CE0ED9700B9568D /* Assets.xcassets */; };
 		562777161CE0ED9700B9568D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562777141CE0ED9700B9568D /* LaunchScreen.storyboard */; };
+		562777211CE0EF6900B9568D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777201CE0EF6900B9568D /* AppDelegate.swift */; };
+		562777241CE0EF8600B9568D /* CALayer.extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777231CE0EF8600B9568D /* CALayer.extend.swift */; };
+		562777291CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777251CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift */; };
+		5627772A1CE0EF9A00B9568D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777261CE0EF9A00B9568D /* FeedTableViewCell.swift */; };
+		5627772B1CE0EF9A00B9568D /* FeedVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777271CE0EF9A00B9568D /* FeedVideoTableViewCell.swift */; };
+		5627772C1CE0EF9A00B9568D /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777281CE0EF9A00B9568D /* VideoView.swift */; };
+		5627772E1CE0EFA700B9568D /* FeedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627772D1CE0EFA700B9568D /* FeedPost.swift */; };
+		562777301CE0EFB300B9568D /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627772F1CE0EFB300B9568D /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +26,14 @@
 		562777121CE0ED9700B9568D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		562777151CE0ED9700B9568D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		562777171CE0ED9700B9568D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		562777201CE0EF6900B9568D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		562777231CE0EF8600B9568D /* CALayer.extend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayer.extend.swift; sourceTree = "<group>"; };
+		562777251CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		562777261CE0EF9A00B9568D /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		562777271CE0EF9A00B9568D /* FeedVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVideoTableViewCell.swift; sourceTree = "<group>"; };
+		562777281CE0EF9A00B9568D /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		5627772D1CE0EFA700B9568D /* FeedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPost.swift; sourceTree = "<group>"; };
+		5627772F1CE0EFB300B9568D /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		6DD6F2B8159A88EB439810BF /* Pods_Feedworthy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feedworthy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F745F576790278064792AE36 /* Pods-Feedworthy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedworthy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Feedworthy/Pods-Feedworthy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,11 +71,51 @@
 		5627770A1CE0ED9700B9568D /* Feedworthy */ = {
 			isa = PBXGroup;
 			children = (
+				562777201CE0EF6900B9568D /* AppDelegate.swift */,
+				562777221CE0EF7600B9568D /* Extensions */,
+				5627771D1CE0EF2000B9568D /* Models */,
+				5627771E1CE0EF2E00B9568D /* Views */,
+				5627771F1CE0EF3C00B9568D /* Controllers */,
 				562777121CE0ED9700B9568D /* Assets.xcassets */,
 				562777141CE0ED9700B9568D /* LaunchScreen.storyboard */,
 				562777171CE0ED9700B9568D /* Info.plist */,
 			);
 			path = Feedworthy;
+			sourceTree = "<group>";
+		};
+		5627771D1CE0EF2000B9568D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5627772D1CE0EFA700B9568D /* FeedPost.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5627771E1CE0EF2E00B9568D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				562777251CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift */,
+				562777261CE0EF9A00B9568D /* FeedTableViewCell.swift */,
+				562777271CE0EF9A00B9568D /* FeedVideoTableViewCell.swift */,
+				562777281CE0EF9A00B9568D /* VideoView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5627771F1CE0EF3C00B9568D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5627772F1CE0EFB300B9568D /* FeedTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		562777221CE0EF7600B9568D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				562777231CE0EF8600B9568D /* CALayer.extend.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		58B0C050F99B350552201EEF /* Frameworks */ = {
@@ -200,6 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5627772C1CE0EF9A00B9568D /* VideoView.swift in Sources */,
+				562777241CE0EF8600B9568D /* CALayer.extend.swift in Sources */,
+				5627772E1CE0EFA700B9568D /* FeedPost.swift in Sources */,
+				562777301CE0EFB300B9568D /* FeedTableViewController.swift in Sources */,
+				5627772A1CE0EF9A00B9568D /* FeedTableViewCell.swift in Sources */,
+				562777291CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift in Sources */,
+				5627772B1CE0EF9A00B9568D /* FeedVideoTableViewCell.swift in Sources */,
+				562777211CE0EF6900B9568D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,10 +371,12 @@
 			baseConfigurationReference = F745F576790278064792AE36 /* Pods-Feedworthy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Feedworthy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.debonair.Feedworthy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -319,6 +385,7 @@
 			baseConfigurationReference = 40BC11C1F3AE9F806640F406 /* Pods-Feedworthy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Feedworthy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.debonair.Feedworthy;
