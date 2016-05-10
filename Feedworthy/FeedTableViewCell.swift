@@ -118,4 +118,11 @@ class FeedTableViewCell: UITableViewCell {
         progressView.alpha = 0.5
     }
     
+    func buildCell(time: String, communityName: String, username: String, content: String?) {
+        labelContent.text = content
+        labelTime.text = time
+        labelUsername.text = username
+        labelCommunityName.text = communityName
+    }
+    
 }
