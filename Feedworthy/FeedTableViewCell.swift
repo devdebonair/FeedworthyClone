@@ -11,19 +11,24 @@ import SnapKit
 
 class FeedTableViewCell: UITableViewCell {
     
+    // Stackviews
     internal var stackViewContainer = UIStackView()
-    internal var labelContent = UILabel()
-    
-    internal var labelUsername = UILabel()
-    internal var labelCommunityName = UILabel()
-    internal var labelTime = UILabel()
     internal var stackViewStats = UIStackView()
     internal var stackViewMetaContainer = UIStackView()
+    
+    // Labels
+    internal var labelTime = UILabel()
+    internal var labelCommunityName = UILabel()
+    internal var labelUsername = UILabel()
+    internal var labelContent = UILabel()
+    
+    // Progress bar
     internal var progressView = UIProgressView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        // Keep autolayout from making its own constraints
         stackViewContainer.translatesAutoresizingMaskIntoConstraints = false
         stackViewStats.translatesAutoresizingMaskIntoConstraints = false
         stackViewMetaContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -32,20 +37,24 @@ class FeedTableViewCell: UITableViewCell {
         labelTime.translatesAutoresizingMaskIntoConstraints = false
         labelContent.translatesAutoresizingMaskIntoConstraints = false
         
+        // Container that holds all content in cell
         let stackViewSpacing: CGFloat = 8
         stackViewContainer.axis = .Vertical
         stackViewContainer.distribution = .EqualSpacing
         stackViewContainer.spacing = stackViewSpacing
         
+        // Container that holds user data - community name, username, time posted
         stackViewStats.axis = .Horizontal
         stackViewStats.distribution = .FillProportionally
         
+        // Container that holds all text in cell
         stackViewMetaContainer.axis = .Vertical
         stackViewMetaContainer.distribution = .EqualSpacing
         stackViewMetaContainer.spacing = stackViewSpacing
         stackViewMetaContainer.layoutMargins.left = 15
         stackViewMetaContainer.layoutMarginsRelativeArrangement = true
         
+        // Label Styling
         let metaFont = UIFont.boldSystemFontOfSize(10)
         let metaColor = UIColor.lightGrayColor()
         labelTime.font = metaFont
@@ -60,12 +69,14 @@ class FeedTableViewCell: UITableViewCell {
         labelContent.lineBreakMode = .ByWordWrapping
         labelContent.font = UIFont.systemFontOfSize(16)
         
+        // Progress Bar Styling
         progressView.trackTintColor = metaColor
         progressView.tintColor = UIColor.darkTextColor()
         progressView.alpha = 0.5
         
         contentView.addSubview(stackViewContainer)
         
+        // Content structuring
         stackViewContainer.addArrangedSubview(stackViewMetaContainer)
         
         stackViewMetaContainer.addArrangedSubview(stackViewStats)
@@ -76,6 +87,7 @@ class FeedTableViewCell: UITableViewCell {
         stackViewStats.addArrangedSubview(labelCommunityName)
         stackViewStats.addArrangedSubview(labelUsername)
         
+        // Contstraints placement
         stackViewContainer.snp_makeConstraints { (make) in
             make.edges.equalTo(contentView)
         }
@@ -93,16 +105,15 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     
+    // not implemented for xibs
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        // Default values
         progressView.progress = 0
         progressView.alpha = 0.5
     }
