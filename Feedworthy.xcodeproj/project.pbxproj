@@ -18,6 +18,7 @@
 		5627772C1CE0EF9A00B9568D /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777281CE0EF9A00B9568D /* VideoView.swift */; };
 		5627772E1CE0EFA700B9568D /* FeedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627772D1CE0EFA700B9568D /* FeedPost.swift */; };
 		562777301CE0EFB300B9568D /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627772F1CE0EFB300B9568D /* FeedTableViewController.swift */; };
+		56979FBF1CE222800025D3D4 /* FeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56979FBE1CE222800025D3D4 /* FeedData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		562777281CE0EF9A00B9568D /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		5627772D1CE0EFA700B9568D /* FeedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPost.swift; sourceTree = "<group>"; };
 		5627772F1CE0EFB300B9568D /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		56979FBE1CE222800025D3D4 /* FeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedData.swift; sourceTree = "<group>"; };
 		6DD6F2B8159A88EB439810BF /* Pods_Feedworthy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feedworthy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F745F576790278064792AE36 /* Pods-Feedworthy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feedworthy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Feedworthy/Pods-Feedworthy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				562777121CE0ED9700B9568D /* Assets.xcassets */,
 				562777141CE0ED9700B9568D /* LaunchScreen.storyboard */,
 				562777171CE0ED9700B9568D /* Info.plist */,
+				56979FBE1CE222800025D3D4 /* FeedData.swift */,
 			);
 			path = Feedworthy;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				562777301CE0EFB300B9568D /* FeedTableViewController.swift in Sources */,
 				5627772A1CE0EF9A00B9568D /* FeedTableViewCell.swift in Sources */,
 				562777291CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift in Sources */,
+				56979FBF1CE222800025D3D4 /* FeedData.swift in Sources */,
 				5627772B1CE0EF9A00B9568D /* FeedVideoTableViewCell.swift in Sources */,
 				562777211CE0EF6900B9568D /* AppDelegate.swift in Sources */,
 			);
