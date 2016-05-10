@@ -20,8 +20,8 @@ This is a recreation of the Feedworthy newsfeed for others general interest.
 --------
 This project uses the following cocoapods:
 
-* [SnapKit] - HTML enhanced for web apps!
-* [KingFisher] - awesome web-based text editor
+* [SnapKit] - A Swift Autolayout DSL for iOS & OS X
+* [KingFisher] - A pure Swift library for downloading and caching images from the web.
 
 ### Todos
 ---------
