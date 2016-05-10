@@ -1,6 +1,6 @@
 //
 //  CALayer.extend.swift
-//  PeriscopeFeed
+//  Feedworthy
 //
 //  Created by Vincent Moore on 5/5/16.
 //  Copyright © 2016 Vincent Moore. All rights reserved.
