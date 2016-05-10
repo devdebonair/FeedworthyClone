@@ -181,17 +181,19 @@ class FeedTableViewController: UITableViewController {
         let ALPHA_INACTIVE: CGFloat = 0.2
         let ALPHA_ACTIVE: CGFloat = 1.0
         let FADE_DELTA: NSTimeInterval = 0.4
+        let MAX_VOLUME: Float = 1.0
+        let MIN_VOLUME: Float = 0.0
         
         if let media = post.media where media.type == .Video {
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             if let cell = cell as? FeedVideoTableViewCell {
                 
                 // Check if video is muted and toggle volume/icon
-                if cell.videoView.player.volume < 1 {
-                    cell.videoView.player.volume = 1.0
+                if cell.videoView.player.volume < MAX_VOLUME {
+                    cell.videoView.player.volume = MAX_VOLUME
                     
                     // mute any video currently playing
-                    currentVideo?.videoView.player.volume = 0.0
+                    currentVideo?.videoView.player.volume = MIN_VOLUME
                     currentVideo = cell
                     
                     UIView.animateWithDuration(FADE_DELTA, animations: {
@@ -200,7 +202,7 @@ class FeedTableViewController: UITableViewController {
                     })
                     
                 } else {
-                    cell.videoView.player.volume = 0.0
+                    cell.videoView.player.volume = MIN_VOLUME
                     UIView.animateWithDuration(FADE_DELTA, animations: {
                         cell.accessoryImage.alpha = ALPHA_INACTIVE
                     })
