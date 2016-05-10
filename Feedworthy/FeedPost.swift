@@ -7,11 +7,14 @@
 //
 
 class FeedPost {
+    
+    // Easy way to designate whether post type is a photo or video
     enum MediaType: Int {
         case Image = 0
         case Video = 1
     }
     
+    // Simple structure to encapsulate Media data without creating another class
     struct Media {
         var type: MediaType
         var url: String
