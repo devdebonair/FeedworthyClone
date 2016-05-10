@@ -128,7 +128,7 @@ class FeedTableViewController: UITableViewController {
             if let cell = cell as? FeedVideoTableViewCell where media.type == .Video {
                 
                 // Add URL to new Table Cell
-                cell.videoView.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
+                cell.setVideo(url)
                 
                 // Constrain video view to resized height
                 cell.videoView.snp_makeConstraints(closure: { (make) in

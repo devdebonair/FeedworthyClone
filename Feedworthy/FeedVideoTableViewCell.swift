@@ -49,6 +49,10 @@ class FeedVideoTableViewCell: FeedTableViewCell {
         videoView.player.volume = 1.0
     }
     
+    func setVideo(url: NSURL) {
+        videoView.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
+    }
+    
     func addAccessoryView(image: UIImage, tintColor: UIColor = UIColor.whiteColor()) {
         accessoryImage.image = image
         accessoryImage.image?.imageWithRenderingMode(.AlwaysTemplate)
