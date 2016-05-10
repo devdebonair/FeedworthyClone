@@ -42,6 +42,8 @@ class FeedTableViewController: UITableViewController {
         FeedPost(username: "b-man", community: "music", time: "4 hrs", media: FeedPost.Media(type: .Video, url: "http://vevoplaylist-live.hls.adaptive.level3.net/vevo/ch2/appleman.m3u8", width: 1280, height: 720), content: "Trending Songs!")
     ]
     
+    var currentVideo: FeedVideoTableViewCell? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
@@ -135,6 +137,13 @@ class FeedTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = cell as? FeedVideoTableViewCell {
+            cell.videoView.player.volume = 0
+            cell.videoView.player.rate = 0
+        }
+    }
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? FeedVideoTableViewCell {
             cell.videoView.player.play()
@@ -153,7 +162,10 @@ class FeedTableViewController: UITableViewController {
                     cell.videoView.player.volume = 1.0
                     UIView.animateWithDuration(0.4, animations: {
                         cell.accessoryImage.alpha = 1.0
+                        self.currentVideo?.accessoryImage.alpha = 0.2
                     })
+                    currentVideo?.videoView.player.volume = 0.0
+                    currentVideo = cell
                 } else {
                     cell.videoView.player.volume = 0.0
                     UIView.animateWithDuration(0.4, animations: {
