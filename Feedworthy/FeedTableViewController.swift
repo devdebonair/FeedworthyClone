@@ -98,7 +98,7 @@ class FeedTableViewController: UITableViewController {
         
         // Configure post meta data for cell
         if let cell = cell as? FeedTableViewCell {
-            cell.buildCell(post.time.uppercaseString, communityName: post.community.uppercaseString, username: post.username.uppercaseString, content: post.content?.uppercaseString)
+            cell.buildCell(post.time.uppercaseString, communityName: post.community.uppercaseString, username: post.username.uppercaseString, content: post.content)
         }
         
         if let media = post.media, url = NSURL(string: media.url) {
