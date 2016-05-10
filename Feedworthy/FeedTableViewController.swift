@@ -42,38 +42,47 @@ class FeedTableViewController: UITableViewController {
         FeedPost(username: "b-man", community: "music", time: "4 hrs", media: FeedPost.Media(type: .Video, url: "http://vevoplaylist-live.hls.adaptive.level3.net/vevo/ch2/appleman.m3u8", width: 1280, height: 720), content: "Trending Songs!")
     ]
     
+    // Reference to currently playing video cell
     var currentVideo: FeedVideoTableViewCell? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Group style TableView to remove sticky headers
         tableView = UITableView(frame: self.tableView.frame, style: .Grouped)
+        
+        // Three different table cells
         tableView.registerClass(FeedTableViewCell.self, forCellReuseIdentifier: FEED_CELL_IDENTIFIER)
         tableView.registerClass(FeedPhotoTableViewCell.self, forCellReuseIdentifier: FEED_CELL_IDENTIFIER_PHOTO)
         tableView.registerClass(FeedVideoTableViewCell.self, forCellReuseIdentifier: FEED_CELL_IDENTIFIER_VIDEO)
+        
+        // Delegates
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Row Heights
         tableView.estimatedRowHeight = 440
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // TableView Styling
         tableView.separatorStyle = .None
-        tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor.whiteColor()
+        
+        // Remove extra lines at bottom of TableView
+        tableView.tableFooterView = UIView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
+    // Each cell belongs to one section for easy spacing
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return data.count
     }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let post = data[indexPath.section]
-        
+    
+        // Get appropriate TableCell type for post media type
         var identifier = FEED_CELL_IDENTIFIER
         if let media = post.media {
             if media.type == .Image {
@@ -87,6 +96,7 @@ class FeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
         cell.selectionStyle = .None
         
+        // Configure post meta data for cell
         if let cell = cell as? FeedTableViewCell {
             cell.labelContent.text = post.content
             cell.labelTime.text = post.time.uppercaseString
@@ -95,15 +105,21 @@ class FeedTableViewController: UITableViewController {
         }
         
         if let media = post.media, url = NSURL(string: media.url) {
+            
+            // Get the aspect ratio of video or image to resize media to fit TableView
             let aspectWidth = UIScreen.mainScreen().bounds.width / CGFloat(media.width)
             let aspectHeight = UIScreen.mainScreen().bounds.height / CGFloat(media.height)
             let ratio = min(aspectWidth, aspectHeight)
             let newHeight = CGFloat(media.height) * ratio
 
             if let cell = cell as? FeedPhotoTableViewCell where media.type == .Image {
+                
+                // Give photo a constraint with resized height
                 cell.imageMedia.snp_remakeConstraints(closure: { (make) in
                     make.height.equalTo(newHeight).priority(999)
                 })
+                
+                // Download image from url and place in cell image view - Track Progress
                 cell.imageMedia.kf_setImageWithURL(url, placeholderImage: UIImage(), optionsInfo: [.Transition(ImageTransition.Fade(1))], progressBlock: { (receivedSize, totalSize) in
                     cell.progressView.alpha = 1.0
                     let progress = Float(receivedSize / totalSize)
@@ -115,17 +131,24 @@ class FeedTableViewController: UITableViewController {
             }
             
             if let cell = cell as? FeedVideoTableViewCell where media.type == .Video {
+                
+                // Add URL to new Table Cell
                 cell.videoView.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
+                
+                // Constrain video view to resized height
                 cell.videoView.snp_makeConstraints(closure: { (make) in
                     make.height.equalTo(newHeight).priority(999)
                 })
                 
+                // Add tint to volume icon on video view
                 cell.accessoryImage.image = UIImage(named: "unmute")
                 cell.accessoryImage.image?.imageWithRenderingMode(.AlwaysTemplate)
                 cell.accessoryImage.tintColor = UIColor.whiteColor()
                 
+                // add volume icon to video view
                 cell.videoView.addSubview(cell.accessoryImage)
                 
+                // place volume icon on bottom left of video
                 cell.accessoryImage.snp_makeConstraints { (make) in
                     make.left.equalTo(cell.videoView).offset(20)
                     make.bottom.equalTo(cell.videoView).offset(-15)
@@ -155,21 +178,31 @@ class FeedTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let post = data[indexPath.section]
+        let ALPHA_INACTIVE: CGFloat = 0.2
+        let ALPHA_ACTIVE: CGFloat = 1.0
+        let FADE_DELTA: NSTimeInterval = 0.4
+        
         if let media = post.media where media.type == .Video {
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             if let cell = cell as? FeedVideoTableViewCell {
+                
+                // Check if video is muted and toggle volume/icon
                 if cell.videoView.player.volume < 1 {
                     cell.videoView.player.volume = 1.0
-                    UIView.animateWithDuration(0.4, animations: {
-                        cell.accessoryImage.alpha = 1.0
-                        self.currentVideo?.accessoryImage.alpha = 0.2
-                    })
+                    
+                    // mute any video currently playing
                     currentVideo?.videoView.player.volume = 0.0
                     currentVideo = cell
+                    
+                    UIView.animateWithDuration(FADE_DELTA, animations: {
+                        cell.accessoryImage.alpha = ALPHA_ACTIVE
+                        self.currentVideo?.accessoryImage.alpha = ALPHA_INACTIVE
+                    })
+                    
                 } else {
                     cell.videoView.player.volume = 0.0
-                    UIView.animateWithDuration(0.4, animations: {
-                        cell.accessoryImage.alpha = 0.2
+                    UIView.animateWithDuration(FADE_DELTA, animations: {
+                        cell.accessoryImage.alpha = ALPHA_INACTIVE
                     })
                 }
             }
