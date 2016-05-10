@@ -11,7 +11,7 @@
 		562777131CE0ED9700B9568D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 562777121CE0ED9700B9568D /* Assets.xcassets */; };
 		562777161CE0ED9700B9568D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562777141CE0ED9700B9568D /* LaunchScreen.storyboard */; };
 		562777211CE0EF6900B9568D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777201CE0EF6900B9568D /* AppDelegate.swift */; };
-		562777241CE0EF8600B9568D /* CALayer.extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777231CE0EF8600B9568D /* CALayer.extend.swift */; };
+		562777241CE0EF8600B9568D /* UIView.extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777231CE0EF8600B9568D /* UIView.extend.swift */; };
 		562777291CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777251CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift */; };
 		5627772A1CE0EF9A00B9568D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777261CE0EF9A00B9568D /* FeedTableViewCell.swift */; };
 		5627772B1CE0EF9A00B9568D /* FeedVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562777271CE0EF9A00B9568D /* FeedVideoTableViewCell.swift */; };
@@ -27,7 +27,7 @@
 		562777151CE0ED9700B9568D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		562777171CE0ED9700B9568D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		562777201CE0EF6900B9568D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		562777231CE0EF8600B9568D /* CALayer.extend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayer.extend.swift; sourceTree = "<group>"; };
+		562777231CE0EF8600B9568D /* UIView.extend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.extend.swift; sourceTree = "<group>"; };
 		562777251CE0EF9A00B9568D /* FeedPhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		562777261CE0EF9A00B9568D /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		562777271CE0EF9A00B9568D /* FeedVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVideoTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		562777221CE0EF7600B9568D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				562777231CE0EF8600B9568D /* CALayer.extend.swift */,
+				562777231CE0EF8600B9568D /* UIView.extend.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -257,7 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5627772C1CE0EF9A00B9568D /* VideoView.swift in Sources */,
-				562777241CE0EF8600B9568D /* CALayer.extend.swift in Sources */,
+				562777241CE0EF8600B9568D /* UIView.extend.swift in Sources */,
 				5627772E1CE0EFA700B9568D /* FeedPost.swift in Sources */,
 				562777301CE0EFB300B9568D /* FeedTableViewController.swift in Sources */,
 				5627772A1CE0EF9A00B9568D /* FeedTableViewCell.swift in Sources */,
