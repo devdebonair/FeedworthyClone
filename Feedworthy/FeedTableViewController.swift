@@ -16,6 +16,9 @@ class FeedTableViewController: UITableViewController {
         FEED_CELL_IDENTIFIER_PHOTO = "FEED_TABLE_CELL_PHOTO",
         FEED_CELL_IDENTIFIER_VIDEO = "FEED_TABLE_CELL_VIDEO"
     
+    let MIN_HEADER_HEIGHT: CGFloat = 0,
+    MAX_HEADER_HEIGHT: CGFloat = 60
+    
     let data = [
         FeedPost(username: "debonair", community: "MargotRobbie", time: "4 hrs", media: FeedPost.Media(type: .Image, url: "http://celebmafia.com/wp-content/uploads/2014/06/margot-robbie-photoshoot-for-elle-magazine-australia-march-2014-issue_1.jpg", width: 1280, height: 1660), content: nil),
         
@@ -178,6 +181,6 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0 : 60
+        return section == 0 ? MIN_HEADER_HEIGHT : MAX_HEADER_HEIGHT
     }
 }
