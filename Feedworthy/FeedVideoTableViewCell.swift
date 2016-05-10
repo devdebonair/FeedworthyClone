@@ -46,6 +46,12 @@ class FeedVideoTableViewCell: FeedTableViewCell {
         }
     }
     
+    func setMediaHeight(height: CGFloat) {
+        videoView.snp_makeConstraints(closure: { (make) in
+            make.height.equalTo(height).priority(999)
+        })
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -112,9 +112,7 @@ class FeedTableViewController: UITableViewController {
             if let cell = cell as? FeedPhotoTableViewCell where media.type == .Image {
                 
                 // Give photo a constraint with resized height
-                cell.imageMedia.snp_remakeConstraints(closure: { (make) in
-                    make.height.equalTo(newHeight).priority(999)
-                })
+                cell.setMediaHeight(newHeight)
                 
                 // Download image from url and place in cell image view - Track Progress
                 cell.imageMedia.kf_setImageWithURL(url, placeholderImage: UIImage(), optionsInfo: [.Transition(ImageTransition.Fade(1))], progressBlock: { (receivedSize, totalSize) in
@@ -131,9 +129,7 @@ class FeedTableViewController: UITableViewController {
                 cell.setVideo(url)
                 
                 // Constrain video view to resized height
-                cell.videoView.snp_makeConstraints(closure: { (make) in
-                    make.height.equalTo(newHeight).priority(999)
-                })
+                cell.setMediaHeight(newHeight)
                 
                 if let image = UIImage(named: "unmute") {
                     cell.addAccessoryView(image)

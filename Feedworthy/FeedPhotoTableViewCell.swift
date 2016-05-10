@@ -42,6 +42,12 @@ class FeedPhotoTableViewCell: FeedTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setMediaHeight(height: CGFloat) {
+        imageMedia.snp_remakeConstraints(closure: { (make) in
+            make.height.equalTo(height).priority(999)
+        })
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageMedia.image = nil
