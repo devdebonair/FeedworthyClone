@@ -41,6 +41,28 @@ class FeedVideoTableViewCell: FeedTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func mute() {
+        videoView.player.volume = 0.0
+    }
+    
+    func unmute() {
+        videoView.player.volume = 1.0
+    }
+    
+    func addAccessoryView(image: UIImage, tintColor: UIColor = UIColor.whiteColor()) {
+        accessoryImage.image = image
+        accessoryImage.image?.imageWithRenderingMode(.AlwaysTemplate)
+        accessoryImage.tintColor = tintColor
+        
+        videoView.addSubview(accessoryImage)
+        
+        accessoryImage.snp_makeConstraints { (make) in
+            make.left.equalTo(videoView).offset(20)
+            make.bottom.equalTo(videoView).offset(-15)
+            make.height.width.equalTo(20)
+        }
+    }
+    
     // Default values
     override func prepareForReuse() {
         super.prepareForReuse()

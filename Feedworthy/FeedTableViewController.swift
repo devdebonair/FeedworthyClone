@@ -135,19 +135,8 @@ class FeedTableViewController: UITableViewController {
                     make.height.equalTo(newHeight).priority(999)
                 })
                 
-                // Add tint to volume icon on video view
-                cell.accessoryImage.image = UIImage(named: "unmute")
-                cell.accessoryImage.image?.imageWithRenderingMode(.AlwaysTemplate)
-                cell.accessoryImage.tintColor = UIColor.whiteColor()
-                
-                // add volume icon to video view
-                cell.videoView.addSubview(cell.accessoryImage)
-                
-                // place volume icon on bottom left of video
-                cell.accessoryImage.snp_makeConstraints { (make) in
-                    make.left.equalTo(cell.videoView).offset(20)
-                    make.bottom.equalTo(cell.videoView).offset(-15)
-                    make.height.width.equalTo(20)
+                if let image = UIImage(named: "unmute") {
+                    cell.addAccessoryView(image)
                 }
             }
         }
