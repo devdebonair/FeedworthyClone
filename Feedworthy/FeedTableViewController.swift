@@ -144,52 +144,38 @@ class FeedTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? FeedVideoTableViewCell {
-            cell.videoView.player.volume = 0
-            cell.videoView.player.rate = 0
+            cell.play()
         }
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? FeedVideoTableViewCell {
-            cell.videoView.player.play()
-            cell.accessoryImage.alpha = 0.2
-            cell.videoView.player.rate = 1.0
-            cell.videoView.player.volume = 0
+            cell.pause()
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let post = data[indexPath.section]
-        let ALPHA_INACTIVE: CGFloat = 0.2
-        let ALPHA_ACTIVE: CGFloat = 1.0
-        let FADE_DELTA: NSTimeInterval = 0.4
-        let MAX_VOLUME: Float = 1.0
-        let MIN_VOLUME: Float = 0.0
         
         if let media = post.media where media.type == .Video {
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             if let cell = cell as? FeedVideoTableViewCell {
                 
                 // Check if video is muted and toggle volume/icon
-                if cell.videoView.player.volume < MAX_VOLUME {
-                    cell.videoView.player.volume = MAX_VOLUME
+                if cell.volume < cell.MAX_VOLUME {
+                    cell.unmute()
                     
                     // mute any video currently playing
-                    currentVideo?.videoView.player.volume = MIN_VOLUME
+                    if cell != currentVideo {
+                        currentVideo?.mute()
+                    }
+                    
                     currentVideo = cell
                     
-                    UIView.animateWithDuration(FADE_DELTA, animations: {
-                        cell.accessoryImage.alpha = ALPHA_ACTIVE
-                        self.currentVideo?.accessoryImage.alpha = ALPHA_INACTIVE
-                    })
-                    
                 } else {
-                    cell.videoView.player.volume = MIN_VOLUME
-                    UIView.animateWithDuration(FADE_DELTA, animations: {
-                        cell.accessoryImage.alpha = ALPHA_INACTIVE
-                    })
+                    cell.mute()
                 }
             }
         }

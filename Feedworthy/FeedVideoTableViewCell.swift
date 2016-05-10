@@ -11,7 +11,16 @@ import AVFoundation
 
 class FeedVideoTableViewCell: FeedTableViewCell {
     
+    internal let MAX_VOLUME: Float = 1.0
+    internal let MIN_VOLUME: Float = 0.0
+    internal let MIN_ACCESSORY_ALPHA: CGFloat = 0.2
+    internal let MAX_ACCESSORY_ALPHA: CGFloat = 1.0
+    
     internal var videoView = VideoView()
+    
+    internal var volume: Float {
+        return videoView.player.volume
+    }
     
     // Image that shows a speaker when audio is playing on a video
     internal var accessoryImage = UIImageView()
@@ -41,18 +50,41 @@ class FeedVideoTableViewCell: FeedTableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Decrease volume and fade out accessory view
     func mute() {
-        videoView.player.volume = 0.0
+        videoView.player.volume = MIN_VOLUME
+        UIView.animateWithDuration(0.4, animations: {
+            self.accessoryImage.alpha = self.MIN_ACCESSORY_ALPHA
+        })
     }
     
+    // Increase volume and fade in accessory view
     func unmute() {
-        videoView.player.volume = 1.0
+        videoView.player.volume = MAX_VOLUME
+        UIView.animateWithDuration(0.4, animations: {
+            self.accessoryImage.alpha = self.MAX_ACCESSORY_ALPHA
+        })
     }
     
+    // Pause video and lower opacity of accessory view
+    func pause() {
+        videoView.player.pause()
+        accessoryImage.alpha = MIN_ACCESSORY_ALPHA
+    }
+    
+    // Play video and adjust opacity of accessory view based on volume
+    func play(isMuted: Bool = true) {
+        videoView.player.play()
+        videoView.player.volume = isMuted ? MIN_VOLUME : MAX_VOLUME
+        accessoryImage.alpha = isMuted ? MIN_ACCESSORY_ALPHA : MAX_ACCESSORY_ALPHA
+    }
+    
+    // change video in player
     func setVideo(url: NSURL) {
         videoView.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
     }
     
+    // add image to bottom left corner of player with tint color
     func addAccessoryView(image: UIImage, tintColor: UIColor = UIColor.whiteColor()) {
         accessoryImage.image = image
         accessoryImage.image?.imageWithRenderingMode(.AlwaysTemplate)
