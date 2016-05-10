@@ -29,6 +29,9 @@ This project uses the following cocoapods:
 
 **MIT License**
 
+Follow me on Twitter: [@devdebonair]
+
 [Feedworthy]: <http://feedworthy.com/>
 [Kingfisher]: <https://github.com/onevcat/Kingfisher>
 [SnapKit]: <https://github.com/SnapKit/SnapKit>
+[@devdebonair]: <https://twitter.com/devdebonair>
