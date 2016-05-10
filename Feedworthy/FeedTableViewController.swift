@@ -118,12 +118,10 @@ class FeedTableViewController: UITableViewController {
                 
                 // Download image from url and place in cell image view - Track Progress
                 cell.imageMedia.kf_setImageWithURL(url, placeholderImage: UIImage(), optionsInfo: [.Transition(ImageTransition.Fade(1))], progressBlock: { (receivedSize, totalSize) in
-                    cell.progressView.alpha = 1.0
                     let progress = Float(receivedSize / totalSize)
-                    cell.progressView.setProgress(progress, animated: true)
+                    cell.setProgress(progress)
                 }, completionHandler: { _ in
-                    cell.progressView.progress = 0
-                    cell.progressView.alpha = 0.5
+                    cell.resetProgress()
                 })
             }
             

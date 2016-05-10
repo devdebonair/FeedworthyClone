@@ -125,4 +125,14 @@ class FeedTableViewCell: UITableViewCell {
         labelCommunityName.text = communityName
     }
     
+    func setProgress(progress: Float) {
+        progressView.setProgress(progress, animated: true)
+        progressView.alpha = 1.0
+    }
+    
+    func resetProgress() {
+        progressView.setProgress(0.0, animated: false)
+        progressView.alpha = 0.5
+    }
+    
 }
