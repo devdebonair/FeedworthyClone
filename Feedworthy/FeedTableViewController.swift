@@ -52,7 +52,7 @@ class FeedTableViewController: UITableViewController {
         tableView.registerClass(FeedVideoTableViewCell.self, forCellReuseIdentifier: FEED_CELL_IDENTIFIER_VIDEO)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 411
+        tableView.estimatedRowHeight = 440
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .None
         tableView.tableFooterView = UIView()
